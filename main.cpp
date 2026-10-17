@@ -35,11 +35,30 @@ int main() {
 
     // declaration
     list<Goat> trip;
+    int m;
 
-    main_menu();
+    do
+    {
+        m = main_menu();
+        switch (m)
+        {
+        case 1:
+            add_goat(trip, names, colors);
+            break;
 
-    add_goat(trip, names, colors);
-    delete_goat(trip);
+        case 2:
+            delete_goat(trip);
+            break;
+
+        case 3:
+            display_trip(trip);
+            break;
+
+        default:
+            break;
+        }
+    } while (m != 4);
+    
 
     return 0;
 }
@@ -75,11 +94,12 @@ void add_goat(list<Goat> &trip, string n[], string c[])
     //              validates, and returns the user's choice.
     // arguments: none
     // returns: the integer the user choose
-    int i = rand() % SZ_NAMES + 1;
-    int a = rand() % MAX_AGE + 1;
+    int i = rand() % SZ_NAMES;
+    int a = rand() % MAX_AGE;
     int j = rand() % SZ_COLORS + 1;
     Goat g(n[i], a, c[j]);
     trip.push_back(g);
+    cout << g.get_name() << " was added to the trip.\n";
 }
 
 int select_goat(list<Goat> trip)
@@ -89,7 +109,7 @@ int select_goat(list<Goat> trip)
     // returns: the integer the user choose
     display_trip(trip);
     int goat;
-    cout << "\nSelect a certain goat, refer by the integer: \n";
+    cout << "\nSelect a goat to delete, refer by the integer: \n";
     cout << "Choice --> ";
     do
     {
