@@ -44,19 +44,20 @@ int main_menu()
     // arguments: none
     // returns: the integer the user choose
     int choice;
+    cout << "\n*** GOAT MANAGER 3001 *** \n";
+    cout << "[1] Add a goat \n";
+    cout << "[2] Delete a goat \n";
+    cout << "[3] List goats \n";
+    cout << "[4] Quit \n";
+    cout << "Choice --> ";
     do
     {
-        cout << "\n\n*** GOAT MANAGER 3001 *** \n";
-        cout << "[1] Add a goat \n";
-        cout << "[2] Delete a goat \n";
-        cout << "[3] List goats \n";
-        cout << "[4] Quit \n";
-        cout << "Choice --> ";
         cin >> choice;
         if (choice < 1 || choice > 4)
         {
-            cout << "invalid input! Please enter a number on the menu";
+            cout << "invalid input! Please enter a number on the menu\n";
+            cout << "Choice --> ";
         }
-    } while (choice != 4);
+    } while (choice < 1 || choice > 4);
     return choice;
 }
