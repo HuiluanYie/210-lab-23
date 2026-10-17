@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <cstdlib>
+#include <ctime>
 #include "Goat.h"
 using namespace std;
 
@@ -60,4 +62,24 @@ int main_menu()
         }
     } while (choice < 1 || choice > 4);
     return choice;
+}
+
+void add_goat(list<Goat> &trip, string n[], string c[])
+{
+    int i = rand() % SZ_NAMES + 1;
+    int a = rand() % MAX_AGE + 1;
+    int j = rand() % SZ_COLORS + 1;
+    n[i];
+    c[j];
+    Goat g(n, a, c);
+}
+
+void delete_goat(list<Goat> &trip)
+{
+
+}
+
+void display_trip(list<Goat> trip)
+{
+
 }
