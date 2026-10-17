@@ -69,9 +69,23 @@ void add_goat(list<Goat> &trip, string n[], string c[])
     int i = rand() % SZ_NAMES + 1;
     int a = rand() % MAX_AGE + 1;
     int j = rand() % SZ_COLORS + 1;
-    n[i];
-    c[j];
-    Goat g(n, a, c);
+    Goat g(n[i], a, c[j]);
+    trip.push_back(g);
+}
+
+int select_goat(list<Goat> trip)
+{
+    display_trip(trip);
+    int goat;
+    cout << "Select a certain goat, refer by the integer: \n";
+    do
+    {
+        /* code */
+    } while (condition);
+    
+    cin >> goat;
+    
+    
 }
 
 void delete_goat(list<Goat> &trip)
@@ -81,5 +95,10 @@ void delete_goat(list<Goat> &trip)
 
 void display_trip(list<Goat> trip)
 {
-
+    int i = 1;
+    for (Goat g:trip)
+    {
+       cout << "[" << i << "] "<< g.get_name() << " (" g.get_age() ", " << g.get_color() ")\n";
+       i++;
+    }
 }
