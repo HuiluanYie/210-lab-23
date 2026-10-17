@@ -33,8 +33,12 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
+    // declaration
+    list<Goat> trip;
+
     main_menu();
 
+    delete_goat(trip);
 
     return 0;
 }
@@ -78,19 +82,30 @@ int select_goat(list<Goat> trip)
     display_trip(trip);
     int goat;
     cout << "Select a certain goat, refer by the integer: \n";
+    cout << "Choice --> ";
     do
     {
-        /* code */
-    } while (condition);
-    
-    cin >> goat;
-    
-    
+        cin >> goat;
+        if (goat < 1 || goat > trip.size())
+        {
+            cout << "invalid input! Please enter a number on the list\n";
+            cout << "Choice --> ";
+        }
+    } while (goat < 1 || goat > trip.size());
+    return goat;
 }
 
 void delete_goat(list<Goat> &trip)
 {
-
+    int g = select_goat(trip);
+    auto it = trip.begin();
+    
+    // move the iterater to the goat to delete
+    for (int i = 0; i < g; i++)
+    {
+        it++;
+    }
+    trip.erase(it);
 }
 
 void display_trip(list<Goat> trip)
@@ -98,7 +113,7 @@ void display_trip(list<Goat> trip)
     int i = 1;
     for (Goat g:trip)
     {
-       cout << "[" << i << "] "<< g.get_name() << " (" g.get_age() ", " << g.get_color() ")\n";
+       cout << "[" << i << "] "<< g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
        i++;
     }
 }
