@@ -100,7 +100,7 @@ int select_goat(list<Goat> trip)
             cout << "Choice --> ";
         }
     } while (goat < 1 || goat > trip.size());
-    return goat;
+    return goat - 1;
 }
 
 void delete_goat(list<Goat> &trip)
