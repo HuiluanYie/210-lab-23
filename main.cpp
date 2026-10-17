@@ -11,10 +11,10 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
-int select_goat(list<Goat> trip);
-void delete_goat(list<Goat> &trip);
-void add_goat(list<Goat> &trip, string [], string []);
-void display_trip(list<Goat> trip);
+int select_goat(list < Goat > trip);
+void delete_goat(list < Goat > & trip);
+void add_goat(list < Goat > & trip, string[], string[]);
+void display_trip(list < Goat > trip);
 int main_menu();
 
 int main() {
@@ -34,14 +34,12 @@ int main() {
     fin1.close();
 
     // declaration
-    list<Goat> trip;
+    list < Goat > trip;
     int m;
 
-    do
-    {
+    do {
         m = main_menu();
-        switch (m)
-        {
+        switch (m) {
         case 1:
             add_goat(trip, names, colors);
             break;
@@ -58,13 +56,11 @@ int main() {
             break;
         }
     } while (m != 4);
-    
 
     return 0;
 }
 
-int main_menu()
-{
+int main_menu() {
     // main_menu() outputs the GM3K1 engine and then obtains, 
     //              validates, and returns the user's choice.
     // arguments: none
@@ -76,11 +72,9 @@ int main_menu()
     cout << "[3] List goats \n";
     cout << "[4] Quit \n";
     cout << "Choice --> ";
-    do
-    {
+    do {
         cin >> choice;
-        if (choice < 1 || choice > 4)
-        {
+        if (choice < 1 || choice > 4) {
             cout << "invalid input! Please enter a number on the menu\n";
             cout << "Choice --> ";
         }
@@ -88,8 +82,7 @@ int main_menu()
     return choice;
 }
 
-void add_goat(list<Goat> &trip, string n[], string c[])
-{
+void add_goat(list < Goat > & trip, string n[], string c[]) {
     // main_menu() outputs the GM3K1 engine and then obtains, 
     //              validates, and returns the user's choice.
     // arguments: none
@@ -102,8 +95,7 @@ void add_goat(list<Goat> &trip, string n[], string c[])
     cout << g.get_name() << " was added to the trip.\n";
 }
 
-int select_goat(list<Goat> trip)
-{
+int select_goat(list < Goat > trip) {
     // select_goat() display a submenu, and get the user's choice of goat
     // arguments: the trip--a list of Goat
     // returns: the integer the user choose
@@ -111,11 +103,9 @@ int select_goat(list<Goat> trip)
     int goat;
     cout << "\nSelect a goat to delete, refer by the integer: \n";
     cout << "Choice --> ";
-    do
-    {
+    do {
         cin >> goat;
-        if (goat < 1 || goat > trip.size())
-        {
+        if (goat < 1 || goat > trip.size()) {
             cout << "invalid input! Please enter a number on the list\n";
             cout << "Choice --> ";
         }
@@ -123,32 +113,34 @@ int select_goat(list<Goat> trip)
     return goat - 1;
 }
 
-void delete_goat(list<Goat> &trip)
-{
+void delete_goat(list < Goat > & trip) {
     // delete_goat() select and delete the goat of the user's choice.
     // arguments: the trip--a list of Goat(by refference)
     // returns: none
+    if (trip.empty()) {
+        cout << "\nThe trip is empty. There is nothing to delete.\n";
+        return;
+    }
+
     int g = select_goat(trip);
     auto it = trip.begin();
-    
+
     // move the iterater to the goat to delete
-    for (int i = 0; i < g; i++)
-    {
+    for (int i = 0; i < g; i++) {
         it++;
     }
+    cout << it -> get_name() << " was deleted from the trip.\n";
     trip.erase(it);
 }
 
-void display_trip(list<Goat> trip)
-{
+void display_trip(list < Goat > trip) {
     // display_trip() displys the trip
     // arguments: the trip--a list of Goat
     // returns: none
     int i = 1;
     cout << "\nThe currect trip:\n";
-    for (Goat g:trip)
-    {
-       cout << "[" << i << "] "<< g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
-       i++;
+    for (Goat g: trip) {
+        cout << "[" << i << "] " << g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
+        i++;
     }
 }
