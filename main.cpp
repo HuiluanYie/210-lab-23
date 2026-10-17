@@ -31,9 +31,32 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-
+    main_menu();
 
 
     return 0;
 }
 
+int main_menu()
+{
+    // main_menu() outputs the GM3K1 engine and then obtains, 
+    //              validates, and returns the user's choice.
+    // arguments: none
+    // returns: the integer the user choose
+    int choice;
+    do
+    {
+        cout << "\n\n*** GOAT MANAGER 3001 *** \n";
+        cout << "[1] Add a goat \n";
+        cout << "[2] Delete a goat \n";
+        cout << "[3] List goats \n";
+        cout << "[4] Quit \n";
+        cout << "Choice --> ";
+        cin >> choice;
+        if (choice < 1 || choice > 4)
+        {
+            cout << "invalid input! Please enter a number on the menu";
+        }
+    } while (choice != 4);
+    return choice;
+}
