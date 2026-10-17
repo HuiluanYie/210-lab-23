@@ -38,6 +38,7 @@ int main() {
 
     main_menu();
 
+    add_goat(trip, names, colors);
     delete_goat(trip);
 
     return 0;
@@ -70,6 +71,10 @@ int main_menu()
 
 void add_goat(list<Goat> &trip, string n[], string c[])
 {
+    // main_menu() outputs the GM3K1 engine and then obtains, 
+    //              validates, and returns the user's choice.
+    // arguments: none
+    // returns: the integer the user choose
     int i = rand() % SZ_NAMES + 1;
     int a = rand() % MAX_AGE + 1;
     int j = rand() % SZ_COLORS + 1;
@@ -79,9 +84,12 @@ void add_goat(list<Goat> &trip, string n[], string c[])
 
 int select_goat(list<Goat> trip)
 {
+    // select_goat() display a submenu, and get the user's choice of goat
+    // arguments: the trip--a list of Goat
+    // returns: the integer the user choose
     display_trip(trip);
     int goat;
-    cout << "Select a certain goat, refer by the integer: \n";
+    cout << "\nSelect a certain goat, refer by the integer: \n";
     cout << "Choice --> ";
     do
     {
@@ -97,6 +105,9 @@ int select_goat(list<Goat> trip)
 
 void delete_goat(list<Goat> &trip)
 {
+    // delete_goat() select and delete the goat of the user's choice.
+    // arguments: the trip--a list of Goat(by refference)
+    // returns: none
     int g = select_goat(trip);
     auto it = trip.begin();
     
@@ -110,7 +121,11 @@ void delete_goat(list<Goat> &trip)
 
 void display_trip(list<Goat> trip)
 {
+    // display_trip() displys the trip
+    // arguments: the trip--a list of Goat
+    // returns: none
     int i = 1;
+    cout << "\nThe currect trip:\n";
     for (Goat g:trip)
     {
        cout << "[" << i << "] "<< g.get_name() << " (" << g.get_age() << ", " << g.get_color() << ")\n";
